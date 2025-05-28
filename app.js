@@ -10,6 +10,12 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
 
+
+
+
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
+});
 // POST data
 app.post('/api/addtask', async (req, res) => {
   const { task, status, deadline } = req.body;
