@@ -8,14 +8,20 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors());
 
-
-
+// Allow both localhost:3000 (React dev) and your Vercel frontend
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://frontendproject1-alpha.vercel.app"
+];
+app.use(cors({
+  origin: allowedOrigins
+}));
 
 app.get("/", (req, res) => {
   res.send("Backend is running!");
 });
+
 // POST data
 app.post('/api/addtask', async (req, res) => {
   const { task, status, deadline } = req.body;
@@ -95,4 +101,8 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log("DB connection error:", err));
 
-export default app; // 👈 important for Vercel
+// Add this to run locally!
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
+export default app; // 👈 important for Vercel (harmless for local dev)
