@@ -12,7 +12,8 @@ app.use(express.json());
 // Allow both localhost (React dev) and your Vercel frontend (production)
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://frontendproject1-alpha.vercel.app"
+  "https://frontendproject1-alpha.vercel.app",
+  "https://frontendproject1-six.vercel.app"  // Add this line!
 ];
 app.use(cors({
   origin: function(origin, callback) {
