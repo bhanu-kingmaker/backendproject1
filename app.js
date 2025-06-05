@@ -13,7 +13,8 @@ app.use(express.json());
 const allowedOrigins = [
   "http://localhost:3000",
   "https://frontendproject1-alpha.vercel.app",
-  "https://frontendproject1-six.vercel.app"  // Add this line!
+  "https://frontendproject1-six.vercel.app",
+  "https://frontendproject1-rouge.vercel.app" // <--- ADD THIS LINE
 ];
 app.use(cors({
   origin: function(origin, callback) {
